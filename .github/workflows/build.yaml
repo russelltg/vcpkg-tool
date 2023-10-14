@@ -18,11 +18,11 @@ jobs:
             preset: linux-ci
           - os: ubuntu-20.04
             preset: linux-ci
-            container:
-              arm64v8/ubuntu:20.04
+            container: arm64v8/ubuntu:20.04
           - os: macos-12
             preset: macos-ci
     runs-on: ${{ matrix.os }}
+    container: ${{ matrix.container }}
     timeout-minutes: 120
     steps:
       - uses: actions/checkout@v3
