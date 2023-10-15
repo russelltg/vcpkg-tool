@@ -18,11 +18,10 @@ jobs:
             preset: linux-ci
           - os: ubuntu-20.04
             preset: linux-ci
-            container: arm64v8/ubuntu:20.04
+            arch: arm64
           - os: macos-12
             preset: macos-ci
     runs-on: ${{ matrix.os }}
-    container: ${{ matrix.container }}
     timeout-minutes: 120
     steps:
       - name: Set up QEMU
@@ -47,10 +46,17 @@ jobs:
         with:
           languages: cpp, javascript
       - name: Configure and Build
-        if: matrix.preset != 'windows-ci'
+        if: matrix.preset != 'windows-ci' && matrix.arch != 'arm64'
         run: |
           cmake --preset ${{ matrix.preset }}
           cmake --build --preset ${{ matrix.preset }} -- -k0
+      - name: Configure and Build (Arm64)
+        if: matrix.preset != 'windows-ci' && matrix.arch == 'arm64'
+        run: |
+          docker run --rm  -v $(pwd):/${{ github.workspace }} \
+          -w ${{ github.workspace }} \
+            arm64v8/ubuntu:20.04 bash -c \
+          'cmake --preset ${{ matrix.preset }} && make --build --preset ${{ matrix.preset }} -- -k0'
       - name: Configure and Build (Windows)
         if: matrix.preset == 'windows-ci'
         shell: cmd
