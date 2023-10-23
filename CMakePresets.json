@@ -150,6 +150,21 @@
             }
         },
         {
+            "name": "linux-ci-arm64",
+            "inherits": [
+                "base",
+                "debug",
+                "artifacts",
+                "linux"
+            ],
+            "cacheVariables": {
+                "CMAKE_CXX_FLAGS": "-fPIC -O0",
+                "CMAKE_TOOLCHAIN_FILE": "zig-toolchain-aarch64.cmake",
+                "CMAKE_DISABLE_PRECOMPILE_HEADERS": true,
+                "VCPKG_WARNINGS_AS_ERRORS": true
+            }
+        },
+        {
             "name": "macos",
             "hidden": true,
             "vendor": {
@@ -184,6 +199,10 @@
             "configurePreset": "linux-ci"
         },
         {
+            "name": "linux-ci-arm64",
+            "configurePreset": "linux-ci-arm64"
+        },
+        {
             "name": "macos-ci",
             "configurePreset": "macos-ci"
         }
@@ -196,6 +215,10 @@
         {
             "name": "linux-ci",
             "configurePreset": "linux-ci"
+        },
+        {
+            "name": "linux-ci-arm64",
+            "configurePreset": "linux-ci-arm64"
         },
         {
             "name": "macos-ci",

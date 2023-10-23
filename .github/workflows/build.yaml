@@ -16,6 +16,11 @@ jobs:
             preset: windows-ci
           - os: ubuntu-20.04
             preset: linux-ci
+          - os: ubuntu-20.04
+            preset: linux-ci-arm64
+            arch: arm64
+            cmake_args: -DZIG_PREFIX=$(pwd)/zig-linux-x86_64-0.12.0-dev.1168+54a4f24ea
+            zig_version: zig-linux-x86_64-0.12.0-dev.1168+54a4f24ea
           - os: macos-12
             preset: macos-ci
     runs-on: ${{ matrix.os }}
@@ -38,10 +43,15 @@ jobs:
         uses: github/codeql-action/init@v2
         with:
           languages: cpp, javascript
+      - name: Download zig
+        if: matrix.arch != ''
+        run: |
+          wget https://ziglang.org/builds/${{ matrix.zig_version }}.tar.xz -O zig.tar.xz
+          tar xf zig.tar.xz
       - name: Configure and Build
         if: matrix.preset != 'windows-ci'
         run: |
-          cmake --preset ${{ matrix.preset }}
+          cmake --preset ${{ matrix.preset }} ${{ matrix.cmake_args }}
           cmake --build --preset ${{ matrix.preset }} -- -k0
       - name: Configure and Build (Windows)
         if: matrix.preset == 'windows-ci'

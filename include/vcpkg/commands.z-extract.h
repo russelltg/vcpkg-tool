@@ -10,6 +10,7 @@
 
 #include <utility>
 #include <vector>
+#include <map>
 
 namespace vcpkg
 {

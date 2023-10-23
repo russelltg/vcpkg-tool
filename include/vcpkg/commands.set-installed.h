@@ -13,6 +13,8 @@
 #include <vcpkg/fwd/vcpkgcmdarguments.h>
 #include <vcpkg/fwd/vcpkgpaths.h>
 
+#include <set>
+
 namespace vcpkg
 {
     enum class DryRun : bool
