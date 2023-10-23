@@ -9,6 +9,10 @@
 
 #include <cmrc/cmrc.hpp>
 
+#ifndef _WIN32
+#include <unistd.h> // for STDERR_FILENO
+#endif
+
 CMRC_DECLARE(cmakerc);
 
 using namespace vcpkg;

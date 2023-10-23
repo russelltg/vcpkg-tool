@@ -7,6 +7,7 @@
 #include <vcpkg/base/util.h>
 
 #include <ctime>
+#include <thread>
 
 #if defined(__APPLE__)
 #include <sys/sysctl.h>
@@ -18,6 +19,7 @@
 // needed for mingw
 #include <processenv.h>
 #else
+#include <unistd.h>
 extern char** environ;
 #endif
 

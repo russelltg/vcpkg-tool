@@ -6,6 +6,9 @@
 #include <vcpkg/fwd/vcpkgcmdarguments.h>
 #include <vcpkg/fwd/vcpkgpaths.h>
 
+#include <unordered_set>
+#include <vector>
+
 namespace vcpkg
 {
     struct PackageDependInfo

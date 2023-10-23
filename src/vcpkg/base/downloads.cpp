@@ -16,6 +16,12 @@
 #include <vcpkg/commands.version.h>
 #include <vcpkg/metrics.h>
 
+#include <thread>
+
+#ifndef _WIN32
+#include <unistd.h>
+#endif
+
 namespace vcpkg
 {
     static std::string replace_secrets(std::string input, View<std::string> secrets)

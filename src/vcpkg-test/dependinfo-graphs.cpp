@@ -2,6 +2,8 @@
 
 #include <vcpkg/commands.depend-info.h>
 
+#include <fmt/core.h>
+
 using namespace vcpkg;
 
 namespace
