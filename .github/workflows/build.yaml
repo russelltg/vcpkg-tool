@@ -17,9 +17,9 @@ jobs:
           - os: ubuntu-20.04
             preset: linux-ci
           - os: ubuntu-20.04
-            preset: linux-ci
+            preset: linux-ci-arm64
             arch: arm64
-            cmake_args: -DCMAKE_TOOLCHAIN_FILE=zig-toolchain-aarch64.cmake -DCMAKE_DISABLE_PRECOMPILE_HEADERS=ON -DZIG_PREFIX=$(pwd)/zig-linux-x86_64-0.12.0-dev.1168+54a4f24ea
+            cmake_args: -DZIG_PREFIX=$(pwd)/zig-linux-x86_64-0.12.0-dev.1168+54a4f24ea
             zig_version: zig-linux-x86_64-0.12.0-dev.1168+54a4f24ea
           - os: macos-12
             preset: macos-ci
