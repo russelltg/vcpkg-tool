@@ -217,6 +217,10 @@
             "configurePreset": "linux-ci"
         },
         {
+            "name": "linux-ci-arm64",
+            "configurePreset": "linux-ci-arm64"
+        },
+        {
             "name": "macos-ci",
             "configurePreset": "macos-ci"
         }
