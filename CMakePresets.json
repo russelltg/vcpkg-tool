@@ -158,7 +158,7 @@
                 "linux"
             ],
             "cacheVariables": {
-                "CMAKE_CXX_FLAGS": "-fprofile-arcs -fPIC -O0",
+                "CMAKE_CXX_FLAGS": "-fPIC -O0",
                 "CMAKE_TOOLCHAIN_FILE": "zig-toolchain-aarch64.cmake",
                 "CMAKE_DISABLE_PRECOMPILE_HEADERS": true,
                 "VCPKG_WARNINGS_AS_ERRORS": true
